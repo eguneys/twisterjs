@@ -1,0 +1,46 @@
+{
+  "name": "twisterjs",
+  "version": "0.1.0",
+  "description": "Tiny Modules for Indie Game Development in Typescript",
+  "keywords": [
+
+    "twisterjs",
+    "indie",
+    "game-development",
+    "springs",
+    "shapes",
+    "delay",
+    "spatial",
+    "2dmath",
+    "webgl",
+    "update",
+    "loop"
+  ],
+  "repository": "github:eguneys/twisterjs",
+  "author": "Emre Güneyler",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc",
+    "prepare": "pnpm build"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  }
+}
