@@ -1,8 +1,8 @@
 ![TwisterJS Banner](design/banner.png)
 
-![NPM Version]()
+![NPM Version](https://img.shields.io/npm/v/twisterjs)
 
-[Website](https://eguneys.github.io/twisterjs) 
+[Website](https://twisterjs.com/) 
 
 Tiny Modules for Indie Game Development in Typescript.
 
@@ -28,7 +28,7 @@ console.log(`Hello ${TwisterJS}`)
 - Vector Math
 - Rectangle and Line Math
 - Polygon Math
-- Simple Shapes with super efficient - WebGL Batched Rendering
+- Drawing Shapes with efficient - WebGL Batched Rendering
 
 
 ## Please Buy me a Coffee
