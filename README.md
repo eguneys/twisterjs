@@ -1,124 +1,35 @@
-# ChangeLog
+![TwisterJS Banner](design/banner.png)
 
-![NPM Version](https://img.shields.io/npm/v/changelog-test-project)
+![NPM Version]()
 
-[Website](https://eguneys.github.io/ChangeLog) • \[link\] Documentation
+[Website](https://eguneys.github.io/twisterjs) 
 
-A Test project to test semantic versioning.
+Tiny Modules for Indie Game Development in Typescript.
+
+## API is
+- Tree-Shakeable Highly Modular Slim
+- Tailored for Indie-Game-Developer Experience
+- Designed with the effort of "Vibe Coding Principles", cross checked with ChatGPT, Gemini, and DeepSeek, and other AI tools.
 
 ## A Quick Look
 
 
 ```ts
-import { changelog } from 'changelog'
+import { TwisterJS } from 'twisterjs'
 
-let cl = changelog()
-
-console.log('hello', cl)
+console.log(`Hello ${TwisterJS}`)
 ```
 
 ## Features
 
-- A Custom Changelog
-  - A nested change log
+- Springs
+- Delaying Actions
+- Steering Behaviors
+- Vector Math
+- Rectangle and Line Math
+- Polygon Math
+- Simple Shapes with super efficient - WebGL Batched Rendering
 
-
-## How to Keep an Open-Source Project
-
-- Keep a ChangeLog
-
-- Git tags
- Every release is a git tag
-
-```bash
- git tag v0.3.0
- git push origin v0.3.0
-```
-
-- Create a GitHub Release
-
-Title: v0.3.0
-Paste changelog section
-
-- Commit style
-
-  - Imperative messages
-  - One logical change per commit
-
-- Example
-
-```bash
-
-# 1. Make sure main is clean
-git status
-
-# 2. Update version in package.json
-
-# 3. Update CHANGELOG.md
-
-
-# 4. Commit
-git commit -am "Release v0.3.0"
-
-# 5. Tag
-git tag v0.3.0
-git push origin main --tags
-
-# 6. Publish
-pnpm publish
-
-```
-
-### Publishing with pnpm
-
-If this is your first publish or you want safety:
-   `pnpm publish --access public`
-
-If you want a dry run:
-   `pnpm publish --dry-run`
-
-
-## Recommended Project Layout
-```graphql
-your-lib/
-├─ src/                 # Library source
-├─ dist/                # Build output (published)
-├─ docs/                # Generated API data (gitignored)
-│  └─ index.json
-├─ website/             # Public project website (Vite)
-│  ├─ src/
-│  ├─ public/
-│  └─ vite.config.ts
-├─ docs-site/           # API docs renderer (Vite)
-│  ├─ src/
-│  ├─ public/
-│  └─ vite.config.ts
-├─ package.json
-├─ pnpm-workspace.yaml
-├─ CHANGELOG.md
-├─ README.md
-└─ LICENSE
-```
-
-
-## Release Day
-
-```
-# release
-pnpm test
-pnpm build
-pnpm publish
-
-# docs
-pnpm docs:build
-pnpm --filter docs-site build
-pnpm --filter website build
-```
-
-## Versioning
-
-This project follows Semantic Versioning.
-Breaking changes will only occur in major releases.
 
 ## Please Buy me a Coffee
 

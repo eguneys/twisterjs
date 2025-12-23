@@ -1,1 +1,1 @@
-export const twisterjs = 'twisterjs'
+export const TwisterJS = 'TwisterJS'
