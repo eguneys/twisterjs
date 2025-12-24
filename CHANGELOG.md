@@ -6,8 +6,9 @@ This project adheres to Semantic Versioning.
 
 ## [Unstaged]
 
-- Rectangle API added \([src/math/rect.ts](source)\)
-- Vector 2 API added \([src/math/vec2.ts](source)\)
+- Delay Timing API added \([delay.ts](src/delay.ts)\)
+- Rectangle API added \([rect.ts](src/math/rect.ts)\)
+- Vector 2 API added \([vec2.ts](src/math/vec2.ts)\)
 - Added Showcase Landing Page available [here](https://twisterjs.com/).
 
 ## [v0.1.0] - 2025-12-23
