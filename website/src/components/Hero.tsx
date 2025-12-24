@@ -1,4 +1,4 @@
-import { createMemo, createSignal, For } from "solid-js"
+import { createEffect, createMemo, createSignal, For, onCleanup } from "solid-js"
 import { PreviewCanvas } from "./PreviewCanvas"
 import { Module_Snippets } from "./modules"
 
@@ -98,6 +98,30 @@ console.log(TwisterJS, add(vec2(0, 0), vec2(0, 0)))
 
 const Showcase = () => {
 
+    let workbenchRef!: HTMLDivElement
+
+    const [isFullscreen, setIsFullscreen] = createSignal(false)
+    createEffect(() => {
+        const handleFullscreenChange = () => {
+            setIsFullscreen(!!document.fullscreenElement)
+        }
+        document.addEventListener('fullscreenchange', handleFullscreenChange)
+        onCleanup(() => 
+            document.removeEventListener('fullscreenchange', handleFullscreenChange)
+        )
+    })
+
+    const toggleFullscreen = () => {
+        if (!workbenchRef) return
+
+        if (!document.fullscreenElement) {
+            workbenchRef.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable fullscreen: ${err.message}`)
+            })
+        } else {
+            document.exitFullscreen()
+        }
+    }
 
     const [activeSnippetId, setActiveSnippetId] = createSignal(Module_Snippets[0].id)
     const activeSnippet = createMemo(() => Module_Snippets.find(_ => _.id === activeSnippetId())!)
@@ -113,9 +137,9 @@ const Showcase = () => {
                 </div>
             </div>
 
-            <div class='bg-white roundex-xs border border-gray-100 overflow-hidden shadow flex flex-col md:flex-row'>
+            <div ref={workbenchRef} class='bg-white roundex-xs border border-gray-100 overflow-hidden shadow flex flex-col md:flex-row'>
                 {/* Catalog Sidebar (Scalable Scrollable List) */}
-                <div class='w-full md:w-56 bg-gray-50/30 border-r border-gray-100 flex flex-col overflow-hidden shrink-0 max-h-50 md:max-h-none'>
+                <div class={`w-full md:w-56 bg-gray-50/30 border-r border-gray-100 flex flex-col overflow-hidden shrink-0 ${isFullscreen() ? 'md:max-h-none' : 'max-h-50 md:max-h-none'}`}>
                     <div class='p-3 border-b border-gray-100 bg-gray-50/50'>
                         <div class='text-[9px] font-bold text-gray-400 uppercase tracking-widest'>Select an Example</div>
                     </div>
@@ -152,11 +176,11 @@ const Showcase = () => {
                         <span class='text-[10px] font-bold text-white uppercase tracking-widest'>{activeSnippet().title}</span>
                         <span class='text-[9px] text-[#5f6fff] font-mono opacity-80'>{activeSnippet().description}</span>
                       </div>
-                      <div class='flex gap-1.5'>
-                        <div class='w-2 h-2 rounded-xs bg-red-500/20'></div>
-                        <div class='w-2 h-2 rounded-xs bg-yellow-500/20'></div>
-                        <div class='w-2 h-2 rounded-xs bg-green-500/20'></div>
-                      </div>
+                      <button onClick={toggleFullscreen} title={isFullscreen() ? 'Exit Fullscreen' : 'Enter Fullscreen'} class='flex gap-1.5 group/controls p-1.5 hover:bg-white/5 rounded-xs transition-colors'>
+                        <div class={`w-2.5 h-2.5 rounded-xs bg-red-500/40 group-hover/controls:bg-red-500 transition-colors`}></div>
+                        <div class={`w-2.5 h-2.5 rounded-xs bg-yellow-500/40 group-hover/controls:bg-yellow-500 transition-colors`}></div>
+                        <div class={`w-2.5 h-2.5 rounded-xs bg-green-500/40 group-hover/controls:bg-green-500 transition-colors`}></div>
+                      </button>
                     </div>
                     {/* Bottom: Split Editor/Preview */}
                     <div class='flex-1 flex flex-col lg:flex-row min-h-0'>
@@ -171,8 +195,8 @@ const Showcase = () => {
 
 
                         {/* Preview Area */}
-                        <div class='w-full lg:w-[320px] bg-black shrink-0 flex items-center justify-center p-1'>
-                            <div class='w-full relative'>
+                        <div class={`w-full bg-black shrink-0 flex items-center justify-center p-1 ${isFullscreen() ? 'lg:w-[45%]' : 'lg:w-[320px] '}`}>
+                            <div class={`w-full relative ${isFullscreen() ? 'max-w-125' : 'max-w-60'}`}>
                                 {/* Shadow Decor */}
                                 <div class='absolute inset-0 bg-[#5f6fff]/20 blur-xs rounded-xs opacity-50 -z-10 animate-pulse'></div>
                                 <div class='relative w-full h-full aspect-square bg-black roundex-xs overflow-hidden flex items-center justify-center'>
