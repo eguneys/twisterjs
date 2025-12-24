@@ -7,9 +7,10 @@ export type InitCanvas = {
     cleanup: () => void
 }
 
-export function Init_canvas(container: HTMLElement, _render: () => void): InitCanvas {
+export function Init_canvas(game_width: number, game_height: number, container: HTMLElement, _render: () => void): InitCanvas {
 
     let canvas = document.createElement('canvas')
+    canvas.classList.add('twisterjs-responsive-full')
 
     const resizeToContainer = () => {
         const dpr = window.devicePixelRatio || 1
@@ -31,7 +32,7 @@ export function Init_canvas(container: HTMLElement, _render: () => void): InitCa
 
 
 
-    const renderer = new Renderer(canvas, 32_768)
+    const renderer = new Renderer(game_width, game_height, canvas, 32_768)
     renderer.setupInstancing()
 
     let batch = new BatchRenderer(renderer, 16_384)

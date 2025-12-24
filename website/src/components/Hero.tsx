@@ -1,4 +1,4 @@
-import { For } from "solid-js"
+import { createMemo, createSignal, For } from "solid-js"
 import { PreviewCanvas } from "./PreviewCanvas"
 import { Module_Snippets } from "./modules"
 
@@ -20,7 +20,7 @@ console.log(TwisterJS, add(vec2(0, 0), vec2(0, 0)))
     return (<>
     <div class='pt-24 pb-12 px-4 max-w-6xl mx-auto'>
         <div class='grid grid-cols-1 lg:grid-cols-12 gap-8 items-start'>
-            {/* Left: Sticky Brancing (On Desktop) */}
+            {/* Left: Sticky Branding (On Desktop) */}
             <div class='lg:col-span-3 lg:sticky lg:top-24'>
                 <h1 class='text-4xl font-bold tracking-tighter leading-node mb-3'>
                     TwisterJS<span class='text-[#ff5f5f]'>.</span>
@@ -88,39 +88,107 @@ console.log(TwisterJS, add(vec2(0, 0), vec2(0, 0)))
                 </div>
             </div>
 
-
-            {/* Right: Scrollable Feature Showcase */}
-            <div class='lg:col-span-9 space-y-4'>
-                <div class='flex items-center justify-between px-2 mb-4'>
-                    <span class='text-[10px] font-black uppercase tracking-[0.3em] text-[#5f6fff]'>Live Examples</span>
-                    <span class='text-[9px] text-gray-400 font-mono'>SCROLL TO EXPLORE →</span>
-                </div>
-
-
-                <div class='space-y-4'>
-                    <For each={Module_Snippets}>{ mod => 
-                       <div class='group flex flex-col md:flex-row gap-0.5 bg-[#f3f4f6] rounded-xs overflow-hidden border border-gray-100 hover:border-[#5f6fff]/30 transition-all duration-300'>
-                        {/* Code Side */}
-                        <div class='flex-1 bg-[#0d0d0d] p-6 relative min-h-35'>
-                            <div class='flex items-center justify-between mb-4'>
-                                <h3 class='text-[10px] font-black uppercase tracking-widest text-white/40'>{mod.title}</h3>
-                                <span class='text-[9px] font-mono text-[#5f6fff] opacity-50'>{mod.description}</span>
-                            </div>
-                            <pre class='mono text-[12px] text-gray-400 leading-relaxed overflow-x-auto selection:bg-[#5f6fff]/30'>
-                            <code class='text-[#5f6fff]/60'>{mod.id}</code></pre>
-                            <br/>
-                            {mod.code}
-                        </div>
-                        {/* Live Preview Side */}
-                        <div class='w-full md:w-45 bg-black shrink-0 flex items-center justify-center p-1'>
-                            <PreviewCanvas renderFn={mod.demo}/>
-                        </div>
-                       </div>
-                    }</For>
-                </div>
-
-            </div>
+            <Showcase />
+            
         </div>
     </div>
+    </>)
+}
+
+
+const Showcase = () => {
+
+
+    const [activeSnippetId, setActiveSnippetId] = createSignal(Module_Snippets[0].id)
+    const activeSnippet = createMemo(() => Module_Snippets.find(_ => _.id === activeSnippetId())!)
+
+    return (<>
+
+        {/* Right: Scrollable Feature Showcase */}
+        <div class='lg:col-span-9'>
+            <div class='flex items-center justify-between px-2 mb-4'>
+                <div class='flex items-center gap-3'>
+                    <span class='text-[10px] font-black uppercase tracking-[0.3em] text-[#5f6fff]'>Example Library</span>
+                    <span class='px-2 py-0.5 bg-[#bg6fff]/10 text-[#5f6fff] rounded-xs text-[8px] font-bold uppercase'>{Module_Snippets.length} examples</span>
+                </div>
+            </div>
+
+            <div class='bg-white roundex-xs border border-gray-100 overflow-hidden shadow flex flex-col md:flex-row'>
+                {/* Catalog Sidebar (Scalable Scrollable List) */}
+                <div class='w-full md:w-56 bg-gray-50/30 border-r border-gray-100 flex flex-col overflow-hidden shrink-0 max-h-50 md:max-h-none'>
+                    <div class='p-3 border-b border-gray-100 bg-gray-50/50'>
+                        <div class='text-[9px] font-bold text-gray-400 uppercase tracking-widest'>Select an Example</div>
+                    </div>
+
+                    <div class='flex-1 overflow-y-auto scrollbar-hide py-1'>
+                        <For each={Module_Snippets}>{mod =>
+                            <button
+                                onClick={() => setActiveSnippetId(mod.id)}
+                                class={`w-full text-left px-4 py-3.5 transition-all group flex items-start gap-3 border-b border-gray-50/50 ${activeSnippetId() === mod.id ? 'bg-white shadow z-10' : 'hover:bg-gray-100/30'
+                                    }`}
+                            >
+                                <div class={`mt-1.5 w-1.5 h-1.5 rounded-xs shrink-0 transition-all ${activeSnippetId() === mod.id ? 'bg-[#5f6fff] scale-125' : 'bg-gray-200'
+                                    }`}></div>
+
+                                <div class='min-w-0'>
+                                    <div class={`text-[10px] font-bold uppercase tracking-wide truncate ${
+                                        activeSnippetId() === mod.id ? 'text-black' : 'text-gray-400 group-hover:text-gray-600'
+                                    }`}>
+                                        {mod.title}
+                                    </div>
+                                    <div class='text-[9px] text-gray-300 font-mono truncate'>{mod.id}</div>
+                                </div>
+                            </button>
+                        }</For>
+                    </div>
+                </div>
+
+
+                {/* Workbench Stage */}
+                <div class='flex-1 flex flex-col bg-[#0d0d0d] min-w-0'>
+                    {/* Top: Metadata Bar */}
+                    <div class='p-4 border-b border-white/5 flex items-center justify-between bg-black/40'>
+                      <div class='flex flex-col'>
+                        <span class='text-[10px] font-bold text-white uppercase tracking-widest'>{activeSnippet().title}</span>
+                        <span class='text-[9px] text-[#5f6fff] font-mono opacity-80'>{activeSnippet().description}</span>
+                      </div>
+                      <div class='flex gap-1.5'>
+                        <div class='w-2 h-2 rounded-xs bg-red-500/20'></div>
+                        <div class='w-2 h-2 rounded-xs bg-yellow-500/20'></div>
+                        <div class='w-2 h-2 rounded-xs bg-green-500/20'></div>
+                      </div>
+                    </div>
+                    {/* Bottom: Split Editor/Preview */}
+                    <div class='flex-1 flex flex-col lg:flex-row min-h-0'>
+                        {/* Code Area */}
+                        <div class='flex-1 p-6 overflow-auto scrollbar-hide relative border-r border-white/5 min-h-50'>
+                          <pre class='mono text-[11px] text-gray-400 leading-relaxed selection:bg-[#5f6fff]/40'>
+                          <code class='text-[#5f6fff]/40'>/* benchmark: {activeSnippet().id} */</code>
+                          <br/>
+                          {activeSnippet().code}
+                          </pre>
+                        </div>
+
+
+                        {/* Preview Area */}
+                        <div class='w-full lg:w-[320px] bg-black shrink-0 flex items-center justify-center p-1'>
+                            <div class='w-full relative'>
+                                {/* Shadow Decor */}
+                                <div class='absolute inset-0 bg-[#5f6fff]/20 blur-xs rounded-xs opacity-50 -z-10 animate-pulse'></div>
+                                <div class='relative w-full h-full aspect-square bg-black roundex-xs overflow-hidden flex items-center justify-center'>
+                                    <PreviewCanvas renderFn={activeSnippet().demo} />
+                                </div>
+
+                                <div class='mt-4 flex flex-col items-center gap-1'>
+                                    <div class='text-[8px] font-mono text-white/30 uppercase tracking-[0.4em]'>Rendering Loop</div>
+                                    <div class='h-px w-8 bg-[#5f6fff]/30'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </>)
 }

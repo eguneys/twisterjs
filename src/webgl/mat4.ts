@@ -2,13 +2,13 @@
  * A 4x4 Matrix represented as a flat array of 16 floats. 
  * This is the standard format for WebGL uniformMatrix4fv.
  */
-type Matrix4x4 = Float32Array & { length: 16 };
+export type Matrix4x4 = Float32Array & { length: 16 };
 
 /**
  * Creates an Orthographic Projection Matrix.
  * Maps a logical coordinate system (like 1920x1080) to WebGL Clip Space (-1 to 1).
  */
-function createOrthoMatrix(
+export function createOrthoMatrix(
     left: number, 
     right: number, 
     bottom: number, 

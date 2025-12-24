@@ -40,7 +40,6 @@ export const Cheatsheet = () => {
             }
             category_group[doc.group].push(doc)
         })
-        console.log(filtered, res)
         return res as FilteredDocs
     })
 

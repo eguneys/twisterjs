@@ -32,12 +32,11 @@
   },
   "scripts": {
     "test": "vitest",
-    "build": "tsc && copyfiles -f src/webgl/*.vert src/webgl/*.frag dist/webgl/",
+    "build": "tsc",
     "prepare": "pnpm build"
   },
   "packageManager": "pnpm@10.13.1",
   "devDependencies": {
-    "copyfiles": "^2.4.1",
     "typescript": "^5.9.3",
     "vitest": "^4.0.16"
   }

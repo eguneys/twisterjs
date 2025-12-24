@@ -8,3 +8,11 @@ export * from './math/vec2'
 export * from './math/rect'
 
 export * from './ai/steer'
+
+export * from './webgl/canvas'
+export * from './webgl/BatchRenderer'
+export * from './webgl/color'
+
+export * from './loop'
+
+export * from './pico_colors_in_gl'

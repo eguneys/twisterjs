@@ -1,6 +1,5 @@
-import VERT_SRC from './shape.vert'
-import FRAG_SRC from './shape.frag'
-import { projectionMatrix } from '../math/mat4';
+import { createOrthoMatrix, type Matrix4x4 } from './mat4';
+import { VERT_SRC, FRAG_SRC } from './Shape_Shader'
 
 
 export class Renderer {
@@ -20,10 +19,14 @@ export class Renderer {
 
     maskDepth = 0
 
-    constructor(canvas: HTMLCanvasElement, maxInstances = 10_000) {
+    projectionMatrix: Matrix4x4
+
+    constructor(width: number, height: number, canvas: HTMLCanvasElement, maxInstances = 10_000) {
         const gl = canvas.getContext("webgl2", { antialias: true, stencil: true });
         if (!gl) throw new Error("WebGL2 not supported");
         this.gl = gl;
+
+        this.projectionMatrix = createOrthoMatrix(0, width, height, 0)
 
         this.maxInstances = maxInstances;
 
@@ -172,7 +175,7 @@ export class Renderer {
         gl.useProgram(this.program);
         gl.bindVertexArray(this.vao);
 
-        gl.uniformMatrix4fv(this.uProjectionMatrix, false, projectionMatrix);
+        gl.uniformMatrix4fv(this.uProjectionMatrix, false, this.projectionMatrix);
 
         // Upload only the needed part of the buffer
         gl.bindBuffer(gl.ARRAY_BUFFER, this.instanceVBO);
