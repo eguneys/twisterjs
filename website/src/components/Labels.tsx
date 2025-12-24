@@ -4,7 +4,7 @@ import { For } from "solid-js"
 const Labels = [
     { label: 'Payload', val: 'Tiny Modular'},
     { label: 'Design', val: 'Indie / AI'},
-    { label: 'Animation', val: 'Spring / AnimChannel'},
+    { label: 'Animation', val: 'Spring'},
     { label: 'Timing', val: 'Delay'},
     { label: 'AI', val: 'Steering Behaviors'},
     { label: 'Math', val: 'Vec2 / Polygon'},
