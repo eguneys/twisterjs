@@ -131,8 +131,8 @@ export const Cheatsheet = () => {
                                             <h3 class='text-xs font-bold mb-0.5 mono group-hover:text-[#5f6fff] truncate'>{doc.name}</h3>
                                             <p class="text-gray-400 text-[10px] mb-2 leading-tight h-6 overflow-hidden line-clamp-2">{doc.description}</p>
                                             <div class='bg-gray-50 p-2 rounded-xs border border-gray-50/50'>
-                                                <code class='text-[10px] mono text-gray-600 block truncate'>
-                                                    {doc.example}
+                                                <code class='text-[10px] mono text-gray-600 block truncate whitespace-pre-wrap'>
+                                                    {doc.example.trim()}
                                                 </code>
                                             </div>
                                         </div>
