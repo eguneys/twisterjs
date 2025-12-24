@@ -1,6 +1,7 @@
 import hljs from 'highlight.js/lib/core'
 import typescript from 'highlight.js/lib/languages/typescript'
-import 'highlight.js/styles/base16/material.css'
+//import 'highlight.js/styles/base16/material.css'
+import 'highlight.js/styles/base16/pico.css'
 
 hljs.registerLanguage('typescript', typescript)
 
