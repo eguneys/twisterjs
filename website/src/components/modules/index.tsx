@@ -1,10 +1,6 @@
+import type { DemoReturn } from "twisterjs"
 import { Springs } from "./Springs"
 import { Welcome } from "./Welcome"
-
-export type DemoReturn = {
-    canvas: HTMLCanvasElement
-    cleanup: () => void
-}
 
 export type ModuleSnippet = {
     id: string

@@ -16,3 +16,5 @@ export * from './webgl/color'
 export * from './loop'
 
 export * from './pico_colors_in_gl'
+
+export * from './AppendAsyncGameToDomManager'

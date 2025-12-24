@@ -6,6 +6,7 @@ This project adheres to Semantic Versioning.
 
 ## [Unstaged]
 
+- Added AppendAsyncGameToDomManager \([AppendAsyncGameToDomManager.ts](src/AppendAsyncGameToDomManager.ts)\)
 - Added Loop function to start a game loop \([loop.ts](src/loop.ts)\)
 - Added WebGL Batched Rendering \([webgl/](src/webgl/BatchedRenderer.ts)\)
 - Added Steering Behaviors \([steer.ts](src/ai/steer.ts)\)
