@@ -1,5 +1,5 @@
-export type Category = 'Math' | 'Timing' | 'Animation' | 'Graphics'
-export const Categories: Category[] = ['Math', 'Timing', 'Animation', 'Graphics']
+export type Category = 'Math' | 'Timing' | 'Animation' | 'AI' | 'Graphics'
+export const Categories: Category[] = ['Math', 'Timing', 'Animation', 'AI', 'Graphics']
 
 
 export type Doc = {

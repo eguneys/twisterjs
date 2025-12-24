@@ -121,7 +121,7 @@ export const Cheatsheet = () => {
                                     </button>
                                     <Show when={!isCollapsed(cat, group_name)}>
 
-                                    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>
+                                    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                                     <For each={docs}>{doc =>
                                         <div class='group p-3 bg-white border border-gray-100 rounded-xs hover:border-[#5f6fff] transition-all'>
                                             <div class='flex justify-between items-center mb-1'>

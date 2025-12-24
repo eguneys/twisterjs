@@ -23,8 +23,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "files": [
-    "dist",
-    "dist/math"
+    "dist"
   ],
   "exports": {
     ".": {

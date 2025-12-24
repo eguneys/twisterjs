@@ -6,6 +6,7 @@ This project adheres to Semantic Versioning.
 
 ## [Unstaged]
 
+- Added Steering Behaviors \([steer.ts](src/ai/steer.ts)\)
 - Added AnimChannel Animation helper \([anim.ts](src/anim.ts)\)
 - Added Delay Timing helper \([delay.ts](src/delay.ts)\)
 - Added Rectangle API \([rect.ts](src/math/rect.ts)\)
