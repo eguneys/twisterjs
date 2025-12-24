@@ -1,5 +1,6 @@
 import { createMemo, createSignal, For, Show } from "solid-js"
-import { Categories, DOCS, type Category, type Doc } from "./docs"
+import { Categories, type Category, type Doc } from "./docs"
+import { DOCS } from '../documentation'
 
 
 export const Cheatsheet = () => {
@@ -131,7 +132,7 @@ export const Cheatsheet = () => {
                                             <div class='relative group/name mb-0.5'>
                                             <h3 class='text-xs font-bold mb-0.5 mono group-hover:text-[#5f6fff] truncate'>{doc.name}</h3>
                                             {/* Tooltip for long names */}
-                                            <div class='absolute bottom-full left-0 mb-2 invisible group-hover/name:visible opacity-0 group-hover/name:opacity-100 transition-all bg-[#1a1a1a] text-white text-[10px] py-1 px-2 rounded-xs shadow-2xl whitespace-nowrap z-[60] pointer-events-none transform translate-y-1 group-hover/name:translate-y-0'>
+                                            <div class='absolute bottom-full left-0 mb-2 invisible group-hover/name:visible opacity-0 group-hover/name:opacity-100 transition-all bg-[#1a1a1a] text-white text-[10px] py-1 px-2 rounded-xs shadow-2xl whitespace-nowrap z-60 pointer-events-none transform translate-y-1 group-hover/name:translate-y-0'>
                                             {doc.name}
                                             <div class='absolute top-full left-2 -mt-1 border-4 border-transparent border-t-[#1a1a1a]'></div>
                                             </div>

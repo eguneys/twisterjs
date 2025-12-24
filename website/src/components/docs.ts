@@ -12,4 +12,4 @@ export type Doc = {
     example: string
 }
 
-export { DOCS } from '../docs'
+export { DOCS } from '../documentation'
