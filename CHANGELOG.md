@@ -6,6 +6,7 @@ This project adheres to Semantic Versioning.
 
 ## [Unstaged]
 
+- Vector 2 API added
 - Added Showcase Landing Page available [here](https://twisterjs.com/).
 
 ## [v0.1.0] - 2025-12-23
