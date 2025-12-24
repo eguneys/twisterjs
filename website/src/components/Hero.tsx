@@ -1,6 +1,7 @@
 import { createEffect, createMemo, createSignal, For, onCleanup } from "solid-js"
 import { PreviewCanvas } from "./PreviewCanvas"
 import { Module_Snippets } from "./modules"
+import { CodeHighlight } from "./CodeHighlight"
 
 export const Hero = (props: { onExplore: () => void }) => {
 
@@ -185,12 +186,10 @@ const Showcase = () => {
                     {/* Bottom: Split Editor/Preview */}
                     <div class='flex-1 flex flex-col lg:flex-row min-h-0'>
                         {/* Code Area */}
-                        <div class='flex-1 p-6 overflow-auto scrollbar-hide relative border-r border-white/5 min-h-50'>
-                          <pre class='mono text-[11px] text-gray-400 leading-relaxed selection:bg-[#5f6fff]/40'>
-                          <code class='text-[#5f6fff]/40'>/* benchmark: {activeSnippet().id} */</code>
-                          <br/>
-                          {activeSnippet().code}
-                          </pre>
+                        <div class='flex-1 px-3 overflow-auto scrollbar-hide relative border-r border-white/5 min-h-50'>
+                            <pre class='mono text-[11px] text-gray-400 leading-relaxed'>
+                                <CodeHighlight code={activeSnippet().code} />
+                            </pre>
                         </div>
 
 

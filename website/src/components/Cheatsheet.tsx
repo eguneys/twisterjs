@@ -1,6 +1,7 @@
 import { createMemo, createSignal, For, Show } from "solid-js"
 import { Categories, type Category, type Doc } from "./docs"
 import { DOCS } from '../documentation'
+import { CodeHighlight } from "./CodeHighlight"
 
 
 export const Cheatsheet = () => {
@@ -138,9 +139,12 @@ export const Cheatsheet = () => {
                                             </div>
                                             <p class="text-gray-400 text-[10px] mb-2 leading-tight h-6 overflow-hidden line-clamp-2">{doc.description}</p>
                                             <div class='bg-gray-50 p-2 rounded-xs border border-gray-50/50'>
+                                            {/*
                                                 <code class='text-[10px] mono text-gray-600 block truncate whitespace-pre-wrap'>
                                                     {doc.example.trim()}
                                                 </code>
+                                                */}
+                                                <CodeHighlight class='text-[10px] mono block truncate whitespace-pre-wrap' code={doc.example.trim()}/>
                                             </div>
                                         </div>
                                     }</For>

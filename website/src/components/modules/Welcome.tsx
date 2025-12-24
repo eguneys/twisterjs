@@ -59,6 +59,10 @@ export const Welcome = {
     id: 'Welcome',
     title: 'Welcome',
     description: 'Welcome',
-    code: 'Welcome',
+    code: `
+import { TwisterJS } from 'twisterjs'
+
+console.log(TwisterJS) // logs TwisterJS
+`,
     demo
 }
