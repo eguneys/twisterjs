@@ -128,7 +128,14 @@ export const Cheatsheet = () => {
                                                     {doc.category}
                                                 </span>
                                             </div>
+                                            <div class='relative group/name mb-0.5'>
                                             <h3 class='text-xs font-bold mb-0.5 mono group-hover:text-[#5f6fff] truncate'>{doc.name}</h3>
+                                            {/* Tooltip for long names */}
+                                            <div class='absolute bottom-full left-0 mb-2 invisible group-hover/name:visible opacity-0 group-hover/name:opacity-100 transition-all bg-[#1a1a1a] text-white text-[10px] py-1 px-2 rounded-xs shadow-2xl whitespace-nowrap z-[60] pointer-events-none transform translate-y-1 group-hover/name:translate-y-0'>
+                                            {doc.name}
+                                            <div class='absolute top-full left-2 -mt-1 border-4 border-transparent border-t-[#1a1a1a]'></div>
+                                            </div>
+                                            </div>
                                             <p class="text-gray-400 text-[10px] mb-2 leading-tight h-6 overflow-hidden line-clamp-2">{doc.description}</p>
                                             <div class='bg-gray-50 p-2 rounded-xs border border-gray-50/50'>
                                                 <code class='text-[10px] mono text-gray-600 block truncate whitespace-pre-wrap'>
