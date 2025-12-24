@@ -3,8 +3,8 @@ import { For } from "solid-js"
 
 const Labels = [
     { label: 'Payload', val: 'Tiny Modular'},
-    { label: 'Design', val: 'Indie'},
-    { label: 'Animation', val: 'Spring'},
+    { label: 'Design', val: 'Indie / AI'},
+    { label: 'Animation', val: 'Spring / AnimChannel'},
     { label: 'Timing', val: 'Delay'},
     { label: 'AI', val: 'Steering Behaviors'},
     { label: 'Math', val: 'Vec2 / Polygon'},
