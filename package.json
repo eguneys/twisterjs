@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Tiny Modules for Indie Game Development in Typescript",
   "keywords": [
-
     "twisterjs",
     "indie",
     "game-development",
@@ -33,11 +32,12 @@
   },
   "scripts": {
     "test": "vitest",
-    "build": "tsc",
+    "build": "tsc && copyfiles -f src/webgl/*.vert src/webgl/*.frag dist/webgl/",
     "prepare": "pnpm build"
   },
   "packageManager": "pnpm@10.13.1",
   "devDependencies": {
+    "copyfiles": "^2.4.1",
     "typescript": "^5.9.3",
     "vitest": "^4.0.16"
   }

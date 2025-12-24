@@ -6,6 +6,7 @@ This project adheres to Semantic Versioning.
 
 ## [Unstaged]
 
+- Added WebGL Batched Rendering \([webgl/](src/webgl/BatchedRenderer.ts)\)
 - Added Steering Behaviors \([steer.ts](src/ai/steer.ts)\)
 - Added AnimChannel Animation helper \([anim.ts](src/anim.ts)\)
 - Added Delay Timing helper \([delay.ts](src/delay.ts)\)
