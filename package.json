@@ -24,8 +24,7 @@
   "type": "module",
   "files": [
     "dist",
-    "README.md",
-    "LICENSE"
+    "dist/math"
   ],
   "exports": {
     ".": {
