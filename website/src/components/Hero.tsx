@@ -144,7 +144,7 @@ const Showcase = () => {
                         <For each={Module_Snippets}>{mod =>
                             <button
                                 onClick={() => setActiveSnippetId(mod.id)}
-                                class={`w-full text-left px-4 py-3.5 transition-all group flex items-start gap-3 border-b border-zinc-50/50 dark:borrder-zinc-900/50 ${
+                                class={`w-full text-left px-4 py-3.5 transition-all group flex items-start gap-3 border-b border-zinc-50/50 dark:border-zinc-900/50 ${
                                     activeSnippetId() === mod.id 
                                     ? 'bg-white dark:bg-zinc-900 shadow-xs z-10' 
                                     : 'hover:bg-zinc-100/30 dark:hover:bg-zinc-800/30'

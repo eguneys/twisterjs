@@ -140,9 +140,9 @@ export const Cheatsheet = () => {
                                                 </span>
                                             </div>
                                             <div class='relative group/name mb-0.5'>
-                                            <h3 class='text-xs font-bold mb-0.5 mono group-hover:text-brand-500 truncate dark:text-zinc-100'>{doc.name}</h3>
+                                            <h3 class='whitespace-pre-wrap text-xs font-bold mb-0.5 mono group-hover:text-brand-500 truncate dark:text-zinc-100'>{doc.name}</h3>
                                             {/* Tooltip for long names */}
-                                            <div class='absolute bottom-full left-0 mb-2 invisible group-hover/name:visible opacity-0 group-hover/name:opacity-100 transition-all bg-[#1a1a1a] dark:bg-white dark:text-black text-white text-[10px] py-1 px-1 rounded-xs shadow-2xl whitespace-nowrap z-60 pointer-events-none transform translate-y-1 group-hover/name:translate-y-0'>
+                                            <div class='whitespace-pre-wrap absolute bottom-full left-0 mb-2 invisible group-hover/name:visible opacity-0 group-hover/name:opacity-100 transition-all bg-[#1a1a1a] dark:bg-white dark:text-black text-white text-[10px] py-1 px-1 rounded-xs shadow-2xl z-60 pointer-events-none transform translate-y-1 group-hover/name:translate-y-0'>
                                             {doc.name}
                                             </div>
                                             </div>

@@ -48,7 +48,7 @@ export default function App() {
         <Cheatsheet/>
       </Show>
     </main>
-    <footer class='py-10 border-t border-zinc-50 dark-border-zinc-900 text-center bg-white dark:bg-zinc-950 transition-colors'>
+    <footer class='py-10 border-t border-zinc-50 dark:border-zinc-900 text-center bg-white dark:bg-zinc-950 transition-colors'>
       <p class='text-[9px] font-bold tracking-[0.3em] text-zinc-300 dark:text-zinc-700 uppercase'>
         TwisterJS &bull; Tailored for the Indie &bull; 2026
       </p>

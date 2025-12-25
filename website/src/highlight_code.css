@@ -36,9 +36,11 @@ code.hljs {
 }
 
 /* purposely do not highlight these things */
+/*
 .hljs-formula,
 .hljs-params,
 .hljs-property {}
+*/
 
 /* base03 - Comments, Invisibles, Line Highlighting */
 .hljs-comment {
