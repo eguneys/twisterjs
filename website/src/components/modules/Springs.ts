@@ -92,10 +92,14 @@ function _update(delta: number) {
 
 
 const _render = () => {
+    batch.beginFrame()
+
     batch.fillRect(x.value, 
         0, 
         1024, 1024, 
         colors.blue)
+
+    batch.endFrame()
 }
 `,
     demo
