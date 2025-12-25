@@ -2,13 +2,14 @@ import { For } from "solid-js"
 
 
 const Labels = [
+    { label: 'Language', val: 'Typescript / esnext'},
     { label: 'Payload', val: 'Tiny Modular'},
     { label: 'Design', val: 'Indie / AI'},
     { label: 'Animation', val: 'Spring'},
     { label: 'Timing', val: 'Delay'},
     { label: 'AI', val: 'Steering Behaviors'},
-    { label: 'Math', val: 'Vec2 / Polygon'},
-    { label: 'Rendering', val: 'Batched WebGL'},
+    { label: 'Math', val: 'Vec2 / Rect'},
+    { label: 'Rendering', val: 'Shapes with Batched WebGL'},
 ]
 
 export const LabelsView = () => {
