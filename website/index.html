@@ -29,9 +29,8 @@
     <style>
         body {
             font-family: 'Space+Grotesk', sans-serif;
-            background-color: #fcfcfc;
-            color: #1a1a1a;
             scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .mono {
             font-family: 'JetBrains Mono', monospace;
@@ -39,6 +38,19 @@
         ::selection {
             background-color: #5f6fff;
             color: white;
+        }
+        /* Custom scrollbar for dark mode */
+        [data-theme='dark'] ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        [data-theme='dark'] ::-webkit-scrollbar-track {
+          background: #18181b;
+        }
+
+        [data-theme='dark'] ::-webkit-scrollbar-thumb {
+          background: #3f3f46;
+          border-radius: 4px;
         }
     </style>
     <!-- Google tag (gtag.js) -->
@@ -51,7 +63,7 @@
       gtag('config', 'G-W7FWS21H63');
     </script>
   </head>
-  <body>
+  <body class="bg-[#fcfcfc] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
   </body>

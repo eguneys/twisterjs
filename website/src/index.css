@@ -7,7 +7,14 @@
   }
 }
 
+/*@custom-variant dark (&:where(.dark, .dark *));*/
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --color-brand-500: #5f6fff;
+  --color-accent-500: #ff5f5f;
+}
 
 canvas.twisterjs-responsive-full {
   width: 100%;

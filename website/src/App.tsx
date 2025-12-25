@@ -1,9 +1,11 @@
-import { createSignal, For, Show } from "solid-js"
+import { createEffect, createSignal, Show } from "solid-js"
 import { Hero } from "./components/Hero"
 import { Cheatsheet } from "./components/Cheatsheet"
 import { LabelsView } from "./components/Labels"
+import { Header } from "./components/Header"
+import { makePersisted } from "@solid-primitives/storage"
 
-type Section = 'landing' | 'cheatsheet'
+export type Section = 'landing' | 'cheatsheet'
 
 export default function App() {
 
@@ -13,20 +15,32 @@ export default function App() {
     set_section(s)
   }
 
+  const [isDark, setIsDark] = makePersisted(createSignal(window.matchMedia('(prefers-color-scheme: dark)').matches), {
+    name: '.twisterjs.theme.is-dark'
+  })
+
+  createEffect(() => {
+    if (isDark()) {
+      document.documentElement.setAttribute('data-theme', 'dark')
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+    }
+  })
+
   return (<>
-  <div class="min-h-screen selection:bg-[#5f6fff] selection:text-white bg-[#fcfcfc]">
-    <Header currentSection={section()} onNavigate={navigate}/>
+  <div class={`min-h-screen transition-colors duration-300 ${isDark() ? 'dark': ''} `}>
+    <Header currentSection={section()} onNavigate={navigate} isDark={isDark()} onToggleTheme={() => setIsDark(!isDark())}/>
     <main class='transition-all duration-300'>
       <Show when={section()==='landing'}>
         <Hero onExplore={() => navigate('cheatsheet')}/>
-        <section class='bg-white border-t border-gray-100 py-12'>
+        <section class='bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 py-12 transition-colors'>
           <div class='max-w-6xl mx-auto px-4'>
             <div class='grid grid-cols-2 md:grid-cols-4 gap-6'>
               <LabelsView/>
             </div>
           </div>
         </section>
-        <section class='bg-gray-50/50 border-t border-gray-100'>
+        <section class='bg-zinc-50/50 dark:bg-zinc-950/50 border-t border-zinc-100 dark:border-zinc-800 transition-colors'>
           <Cheatsheet/>
         </section>
       </Show>
@@ -34,34 +48,11 @@ export default function App() {
         <Cheatsheet/>
       </Show>
     </main>
-    <footer class='py-10 border-t border-gray-50 text-center bg-white'>
-      <p class='text-[9px] font-bold tracking-[0.3em] text-gray-300 uppercase'>
+    <footer class='py-10 border-t border-zinc-50 dark-border-zinc-900 text-center bg-white dark:bg-zinc-950 transition-colors'>
+      <p class='text-[9px] font-bold tracking-[0.3em] text-zinc-300 dark:text-zinc-700 uppercase'>
         TwisterJS &bull; Tailored for the Indie &bull; 2026
       </p>
     </footer>
   </div>
     </>)
-}
-
-
-const Header = (props: { currentSection: Section, onNavigate: (s: Section) => void }) => {
-
-  type Link = { id: Section, label: string }
-  const Links: Link[] = [{ id: 'landing', label: 'Start'}, { id: 'cheatsheet', label: 'Docs'}]
-
-  return (<>
-  <nav class='fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-4 flex justify-between items-center'>
-  <div class='text-2xl font-bold tracking-tighter cursor-pointer flex items-center gap-2' onClick={() => props.onNavigate('landing')}>
-    <div class="w-4 h-4 bg-[#5f6fff] rounded-[1px]"></div>
-      TwisterJS
-    </div>
-    <div class='flex gap-8 text-sm font-medium uppercase tracking-widest'>
-          <For each={Links}>{link =>
-            <button onClick={() => props.onNavigate(link.id)} class={`transition-colors hover:text-[#5f6fff]' ${props.currentSection === link.id ? 'text-[#5f6fff]' : 'text-gray-400'}`}>
-              {link.label}
-            </button>
-          }</For>
-    </div>
-  </nav>
-  </>)
 }
