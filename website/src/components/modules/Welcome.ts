@@ -57,8 +57,8 @@ async function demo(el: HTMLElement) {
 
 export const Welcome = {
     id: 'Welcome',
-    title: 'Welcome',
-    description: 'Welcome',
+    title: 'Import as esnext module',
+    description: 'Hey fellow indie, TwisterJS is only available as an esnext module.',
     code: `
 import { TwisterJS } from 'twisterjs'
 
