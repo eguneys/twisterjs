@@ -2,6 +2,7 @@ import { createEffect, createMemo, createSignal, For, onCleanup } from "solid-js
 import { PreviewCanvas } from "./PreviewCanvas"
 import { Module_Snippets } from "./modules"
 import { CodeHighlight } from "./CodeHighlight"
+import { makePersisted } from "@solid-primitives/storage"
 
 export const Hero = (props: { onExplore: () => void }) => {
 
@@ -119,7 +120,9 @@ const Showcase = () => {
         }
     }
 
-    const [activeSnippetId, setActiveSnippetId] = createSignal(Module_Snippets[0].id)
+    const [activeSnippetId, setActiveSnippetId] = makePersisted(createSignal(Module_Snippets[0].id), {
+        name: '.twisterjs.active-snippet-id'
+    })
     const activeSnippet = createMemo(() => Module_Snippets.find(_ => _.id === activeSnippetId())!)
 
     return (<>
