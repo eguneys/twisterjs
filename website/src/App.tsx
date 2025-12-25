@@ -4,6 +4,7 @@ import { Cheatsheet } from "./components/Cheatsheet"
 import { LabelsView } from "./components/Labels"
 import { Header } from "./components/Header"
 import { makePersisted } from "@solid-primitives/storage"
+import { ExampleGallery } from "./components/ExampleGallery"
 
 export type Section = 'landing' | 'cheatsheet'
 
@@ -39,6 +40,9 @@ export default function App() {
               <LabelsView/>
             </div>
           </div>
+        </section>
+        <section class='transition-colors'>
+          <ExampleGallery/>
         </section>
         <section class='bg-zinc-50/50 dark:bg-zinc-950/50 border-t border-zinc-100 dark:border-zinc-800 transition-colors'>
           <Cheatsheet/>

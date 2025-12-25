@@ -1,6 +1,10 @@
 import type { DemoReturn } from "twisterjs"
 import { Springs } from "./Springs"
 import { Welcome } from "./Welcome"
+import { Delay } from "./Delay"
+import { Steering } from "./Steer"
+import { Shapes } from "./Shapes"
+import { WebpageIntegration } from "./WebpageIntegration"
 
 export type ModuleSnippet = {
     id: string
@@ -12,5 +16,10 @@ export type ModuleSnippet = {
 
 export const Module_Snippets: ModuleSnippet[] = [
     Welcome,
-    Springs
+    Springs,
+    Delay,
+    Steering,
+    Shapes,
+    WebpageIntegration
+
 ]
