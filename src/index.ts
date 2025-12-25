@@ -7,6 +7,9 @@ export const TwisterJS = 'TwisterJS'
 export * from './math/vec2'
 export * from './math/rect'
 
+export * from './anim'
+export * from './delay'
+
 export * from './ai/steer'
 
 export * from './webgl/canvas'

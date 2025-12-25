@@ -136,7 +136,7 @@ const Showcase = () => {
                 </div>
             </div>
 
-            <div ref={workbenchRef} class={`bg-white dark:bg-zinc-900 rounded-xs border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-xs flex flex-col md:flex-row ${isFullscreen() ? 'h-screen w-screen rounded-none border-none': ''}`}>
+            <div ref={workbenchRef} class={`bg-white dark:bg-zinc-900 rounded-xs border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-xs flex flex-col md:flex-row min-h-150 md:h-125 transition-all ${isFullscreen() ? 'h-screen w-screen rounded-none border-none': ''}`}>
                 {/* Catalog Sidebar (Scalable Scrollable List) */}
                 <div class={`w-full md:w-56 bg-zinc-50/30 dark:bg-zinc-950/30 border-r border-zinc-100 dark:border-zinc-800 flex flex-col overflow-hidden shrink-0 ${isFullscreen() ? 'md:max-h-none' : 'max-h-50 md:max-h-none'}`}>
                     <div class='p-3 border-b border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-950/50'>
@@ -187,12 +187,15 @@ const Showcase = () => {
                       </button>
                     </div>
                     {/* Bottom: Split Editor/Preview */}
-                    <div class='flex-1 flex flex-col lg:flex-row min-h-0'>
+                    <div class='flex-1 flex flex-col lg:flex-row min-h-0 overflow-hidden'>
                         {/* Code Area */}
-                        <div class='flex-1 px-3 overflow-auto scrollbar-hide relative border-r border-white/5 min-h-50'>
-                            <pre class='mono text-[11px] text-zinc-400 leading-relaxed selection:bg-brand-500/40'>
-                                <CodeHighlight code={activeSnippet().code} />
-                            </pre>
+                        <div class='flex-1 relative border-r border-white/5 bg-[#0a0a0a] min-h-0 flex flex-col'>
+                            <div class='flex-1 overflow-y-auto p-6 custom-scrollbar-minimal'>
+                                <pre class='mono text-[11px] text-zinc-400 leading-relaxed selection:bg-brand-500/40'>
+                                    <CodeHighlight code={activeSnippet().code} />
+                                </pre>
+                            </div>
+                            <div class='absolute bottom-0 left-0 right-0 h-8 bg-linear-to-t from-black to-transparent pointer-events-none opacity-40'></div>
                         </div>
 
 
