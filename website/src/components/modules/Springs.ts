@@ -1,4 +1,4 @@
-import { BatchRenderer, Init_canvas, Loop } from "twisterjs"
+import { BatchRenderer, Delay, Init_canvas, Loop } from "twisterjs"
 
 import { AnimChannel, colors, vibrant } from 'twisterjs';
 
@@ -6,6 +6,8 @@ let x: AnimChannel
 let y: AnimChannel
 let z: AnimChannel
 let q: AnimChannel
+
+let d: Delay
 
 function _init() {
   
@@ -16,6 +18,25 @@ function _init() {
 
     z.springTo(0)
     q.springTo(100, { stiffness: 1000, damping: 10 })
+
+    d = new Delay().set_line(`2000 pong`)
+}
+
+const ping = () => {
+
+    x.springTo(300, { stiffness: 200, damping: 10 })
+    y.springTo(500, { stiffness: 100, damping: 5 })
+
+    z.springTo(0)
+    q.springTo(0, { stiffness: 1000, damping: 10 })
+}
+const pong = () => {
+
+    x.springTo(0, { stiffness: 200, damping: 10 })
+    y.springTo(0, { stiffness: 100, damping: 5 })
+
+    z.springTo(300)
+    q.springTo(300, { stiffness: 1000, damping: 10 })
 }
 
 function _update(delta: number) {
@@ -24,6 +45,16 @@ function _update(delta: number) {
     y.update(delta / 1000)
     z.update(delta / 1000)
     q.update(delta / 1000)
+
+    d.update(delta)
+
+    if (d.action === 'ping') {
+        d.set_line('2000 pong')
+        ping()
+    } else if (d.action === 'pong') {
+        d.set_line('2000 ping')
+        pong()
+    }
 }
 
 
