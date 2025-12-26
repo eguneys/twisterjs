@@ -573,7 +573,7 @@ let  { batch } = Init_canvas(/* */)
     batch.fillRect(/* */)
      
     batch.endFrame()
-`},{id:`Init_canvas`,name:`Init_canvas`,category:`Graphics`,group:`Renderer`,description:`A function to create a canvas, append to the DOM, and enable drawing with BatchRenderer`,example:`
+`},{id:`Init_canvas`,name:`Init_canvas(game_width: number, game_height: number, el: HTMLElement, _render: () => void): void`,category:`Graphics`,group:`Renderer`,description:`A function to create a canvas, append to the DOM, and enable drawing with BatchRenderer`,example:`
 import { Init_canvas } from 'twisterjs'
 
 let el: HTMLElement = document.getElementById('app')!
