@@ -23,7 +23,7 @@ let  { batch } = Init_canvas(/* */)
 `},
     {
         id: 'Init_canvas',
-        name: 'Init_canvas',
+        name: 'Init_canvas(game_width: number, game_height: number, el: HTMLElement, _render: () => void): void',
         category: 'Graphics',
         group: 'Renderer',
         description: 'A function to create a canvas, append to the DOM, and enable drawing with BatchRenderer',
