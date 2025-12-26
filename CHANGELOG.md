@@ -4,6 +4,10 @@ All notable changes to this project will be documented here.
 
 This project adheres to Semantic Versioning.
 
+## [v0.2.1] - 2025-12-26
+
+- Added documentation to DragHandler
+
 ## [v0.2.0] - 2025-12-26
 
 - Added DragHandler for Mouse Input controls \([drag.ts](src/drag.ts)\)

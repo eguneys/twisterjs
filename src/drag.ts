@@ -14,6 +14,23 @@ export type DragHandler = {
     cleanup(): void
 }
 
+/**
+ * An object to listen for mouse events, it's API focuses on implementing a drag drop logic
+ * @param game_width Logical width of the game, used to correctly scale the mouse coordinates
+ * @param game_height Logical height of the game
+ * @param el The canvas to listen the events for
+ * @returns DragHandler
+ * 
+ * @example
+ * ```
+ * let drag = DragHandler(1920, 1080, el)
+ * 
+ *    // call update in update loop
+ *    drag.update(delta)
+ *    // query the mouse input
+ *    console.log(drag.is_hovering[0], drag.is_hovering[1]) 
+ * ```
+ */
 export function DragHandler(game_width: number, game_height: number, el: HTMLCanvasElement) {
 
     let is_hovering: XY = [500, 500]
