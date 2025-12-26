@@ -15,9 +15,17 @@ Tiny Modules for Indie Game Development in Typescript.
 
 
 ```ts
-import { TwisterJS } from 'twisterjs'
+import { TwisterJS, Loop } from 'twisterjs'
 
-console.log(`Hello ${TwisterJS}`)
+function _update(delta: number) {
+   console.log(TwisterJS, delta) // logs TwisterJS
+}
+
+function _render() {
+}
+
+// starts a game loop using requestAnimationFrame
+let loop_cleanup = Loop(_update, _render)
 ```
 
 ## Features
@@ -29,6 +37,9 @@ console.log(`Hello ${TwisterJS}`)
 - Rectangle and Line Math
 - Polygon Math
 - Drawing Shapes with efficient - WebGL Batched Rendering
+- Game Loop
+- Mouse Input
+- Webpage Integration Manager
 
 
 ## Please Buy me a Coffee

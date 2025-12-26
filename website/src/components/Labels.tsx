@@ -10,6 +10,7 @@ const Labels = [
     { label: 'AI', val: 'Steering Behaviors'},
     { label: 'Math', val: 'Vec2 / Rect'},
     { label: 'Rendering', val: 'Shapes with Batched WebGL'},
+    { label: 'Utils', val: 'Loop / Mouse Input'},
 ]
 
 export const LabelsView = () => {

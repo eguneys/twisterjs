@@ -1,4 +1,3 @@
-/** @private Input Drag Handler */
 import { TouchMouse } from "./input"
 
 type XY = [number, number]

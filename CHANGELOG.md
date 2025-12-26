@@ -13,7 +13,7 @@ This project adheres to Semantic Versioning.
 - Added DragHandler for Mouse Input controls \([drag.ts](src/drag.ts)\)
 - Added AppendAsyncGameToDomManager \([AppendAsyncGameToDomManager.ts](src/AppendAsyncGameToDomManager.ts)\)
 - Added Loop function to start a game loop \([loop.ts](src/loop.ts)\)
-- Added WebGL Batched Rendering \([webgl/](src/webgl/BatchedRenderer.ts)\)
+- Added WebGL Batched Rendering \([webgl/](src/webgl/BatchRenderer.ts)\)
 - Added Steering Behaviors \([steer.ts](src/ai/steer.ts)\)
 - Added AnimChannel Animation helper \([anim.ts](src/anim.ts)\)
 - Added Delay Timing helper \([delay.ts](src/delay.ts)\)
