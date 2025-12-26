@@ -1,7 +1,7 @@
 /**
  * Starts a Game Loop using requestAnimationFrame
- * @param update callback gets called every frame to update the simulation with `delta` milliseconds
- * @param render callback gets called once every frame to render the simulation with `alpha` interpolation argument
+ * @param update callback called every frame to update the simulation with `delta` milliseconds
+ * @param render callback called once every frame to render the simulation with `alpha` interpolation argument
  */
 export function Loop(update: (dt: number) => void, render: (alpha: number) => void, after_render?: () => void) {
 

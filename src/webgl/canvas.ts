@@ -7,6 +7,21 @@ export type InitCanvas = {
     cleanup: () => void
 }
 
+/**
+ * Creates a canvas, appends it to DOM, and sets up WebGL Batched Rendering with simple shapes
+ * @param game_width Logical game width you will use when drawing
+ * @param game_height Logical game height
+ * @param container DOM element to append the Canvas to
+ * @param _render your render function used to call it when resizing that avoids flicker, not essential, pass a dummy if you want
+ * 
+ * @returns ```
+ * { 
+ *    canvas: HTMLCanvasElement, 
+ *    batch: BatchRenderer, 
+ *    cleanup: () => void 
+ * }
+ * ```
+ */
 export function Init_canvas(game_width: number, game_height: number, container: HTMLElement, _render: () => void): InitCanvas {
 
     let canvas = document.createElement('canvas')

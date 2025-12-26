@@ -5,6 +5,9 @@ import type { Renderer } from "./renderer";
 
 type Color = { r: number; g: number; b: number; a: number };
 
+/**
+ * Renders simple shapes using Batching and on a single draw call with instanced drawing 
+ */
 export class BatchRenderer {
   private renderer: Renderer;
 
@@ -38,25 +41,56 @@ export class BatchRenderer {
     this.buffer = new Float32Array(maxInstances * BatchRenderer.INSTANCE_STRIDE);
   }
 
+  /**
+   * Must be called once before drawing any shapes
+   */
   beginFrame() {
     this.cursor = 0;
     // Any per-frame state resets would go here
   }
 
+  /**
+   * Must be called once after drawing all your shapes
+   */
   endFrame() {
     this.flush();
   }
 
+  /**
+   * Begins a mask mode
+   * Must be called once before drawing a mask
+   * 
+   * @example
+   * 
+   * ```ts
+   * batch.pushMask()
+   * // draw mask
+   * batch.fillRect(\/\* \*\/)
+   * batch.endMask()
+   * // draw shapes that the mask will be applied to
+   * batch.fillRect(\/\* \*\/)
+   * batch.popMask()
+   * ```
+   * 
+   */
   pushMask() {
     this.flush()
     this.renderer.pushMask()
   }
 
+  /**
+   * Ends a mask mode
+   * Must be called once after drawing your masked shapes
+   */
   popMask() {
     this.flush()
     this.renderer.popMask()
   }
 
+  /**
+   * Ends the mask region definition
+   * Must be called once in between pushMask and popMask
+   */
   endMask() {
     this.flush()
     this.renderer.endMask()

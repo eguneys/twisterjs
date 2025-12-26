@@ -10,6 +10,49 @@ export type AppendAsyncGameToDomManager = {
   on_destroy(): void
 }
 
+/**
+ * A Manager to help manage appending your game canvas 
+ * to the webpage safely so that it cleans up after it.
+ * The canvas is obtained asynchronously through `on_new_renderFn` callback
+ * and can be called multiple times safely because the cleanup will happen accordingly.
+ * 
+ * @returns Two callbacks you have to call to pass the canvas, and to destroy on cleanup
+ * ```
+ * { on_new_renderFn, on_destroy }
+ * ```
+ * 
+ * @example
+ * 
+ * ```
+ *   const renderFn = async () => {
+ *     let { canvas } = Init_canvas(...)
+ * 
+ *     // load your game
+ * 
+ *     const cleanup = () => {
+ *        // your cleanup logic here
+ *     }
+ * 
+ *     return {
+ *       canvas,
+ *       cleanup
+ *     }
+ *   }
+ * 
+ *   onMount(() => {
+ *       let { on_new_renderFn, on_destroy }= AppendAsyncGameToDomManager(el)
+ *
+ *       createEffect(() => {
+ *         on_new_renderFn(renderFn)
+ *       })
+ *
+ *       onCleanup(() => {
+ *         on_destroy()
+ *       })
+ *   })
+ * ```
+ * 
+ */
 export function AppendAsyncGameToDomManager(el: HTMLElement): AppendAsyncGameToDomManager {
 
   const on_new_renderFn = (renderFn: RenderFn) => {
