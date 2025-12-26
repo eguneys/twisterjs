@@ -113,6 +113,7 @@ canvas.twisterjs-responsive-full {
   touch-action: none;
   pointer-events: all;
   display: block;
+  cursor: none;
 }
 */
 `,

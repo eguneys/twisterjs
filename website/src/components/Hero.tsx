@@ -1,6 +1,6 @@
 import { createEffect, createMemo, createSignal, For, onCleanup } from "solid-js"
 import { PreviewCanvas } from "./PreviewCanvas"
-import { Module_Snippets } from "./modules"
+import { Module_Snippets } from "../modules"
 import { CodeHighlight } from "./CodeHighlight"
 import { makePersisted } from "@solid-primitives/storage"
 

@@ -4,8 +4,9 @@ All notable changes to this project will be documented here.
 
 This project adheres to Semantic Versioning.
 
-## [Unstaged]
+## [v0.2.0] - 2025-12-26
 
+- Added DragHandler for Mouse Input controls \([drag.ts](src/drag.ts)\)
 - Added AppendAsyncGameToDomManager \([AppendAsyncGameToDomManager.ts](src/AppendAsyncGameToDomManager.ts)\)
 - Added Loop function to start a game loop \([loop.ts](src/loop.ts)\)
 - Added WebGL Batched Rendering \([webgl/](src/webgl/BatchedRenderer.ts)\)

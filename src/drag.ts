@@ -14,7 +14,7 @@ export type DragHandler = {
     cleanup(): void
 }
 
-export function DragHandler(el: HTMLCanvasElement) {
+export function DragHandler(game_width: number, game_height: number, el: HTMLCanvasElement) {
 
     let is_hovering: XY = [500, 500]
 
@@ -30,7 +30,7 @@ export function DragHandler(el: HTMLCanvasElement) {
     let t_double_click = 0
 
     function scale_e(e: XY): XY {
-        return [e[0] * 1920, e[1] * 1080]
+        return [e[0] * game_width, e[1] * game_height]
     }
 
     let hooks = {

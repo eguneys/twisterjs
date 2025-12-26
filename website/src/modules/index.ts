@@ -5,6 +5,7 @@ import { Delay } from "./Delay"
 import { Steering } from "./Steer"
 import { Shapes } from "./Shapes"
 import { WebpageIntegration } from "./WebpageIntegration"
+import { Drag } from "./Drag"
 
 export type ModuleSnippet = {
     id: string
@@ -20,6 +21,6 @@ export const Module_Snippets: ModuleSnippet[] = [
     Delay,
     Steering,
     Shapes,
-    WebpageIntegration
-
+    WebpageIntegration,
+    Drag
 ]

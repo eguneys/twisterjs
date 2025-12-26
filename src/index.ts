@@ -17,6 +17,7 @@ export * from './webgl/BatchRenderer'
 export * from './webgl/color'
 
 export * from './loop'
+export * from './drag'
 
 export * from './pico_colors_in_gl'
 

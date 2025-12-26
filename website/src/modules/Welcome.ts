@@ -60,9 +60,17 @@ export const Welcome = {
     title: 'Import as esnext module',
     description: 'Hey fellow indie, TwisterJS is only available as an esnext module.',
     code: `
-import { TwisterJS } from 'twisterjs'
+import { TwisterJS, Loop } from 'twisterjs'
 
-console.log(TwisterJS) // logs TwisterJS
+function _update(delta: number) {
+   console.log(TwisterJS, delta) // logs TwisterJS
+}
+
+function _render() {
+}
+
+// starts a game loop using requestAnimationFrame
+let loop_cleanup = Loop(_update, _render)
 `,
     demo
 }

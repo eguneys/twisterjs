@@ -39,10 +39,14 @@ export type AppendAsyncGameToDomManager = {
  *     }
  *   }
  * 
+ *   /* Sample Demonstration through SolidJS API
  *   onMount(() => {
  *       let { on_new_renderFn, on_destroy }= AppendAsyncGameToDomManager(el)
  *
  *       createEffect(() => {
+ *         // renderFn could be a reactive property
+ *         // so that on_new_renderFn gets called on every change
+ *         // it's safe because cleanup will happen accordingly
  *         on_new_renderFn(renderFn)
  *       })
  *
